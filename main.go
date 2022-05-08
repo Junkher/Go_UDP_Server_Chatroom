@@ -9,8 +9,7 @@ import (
 // const(
 // 	address string = ":8000"
 // )
-
-
+// 从命令行参数获取端口号
 func main() {
 
 	if len(os.Args) != 2 {

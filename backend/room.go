@@ -1,6 +1,9 @@
 package backend
 
-import "net"
+import (
+	"fmt"
+	"net"
+)
 
 type room struct {
 	name    string
@@ -9,12 +12,9 @@ type room struct {
 
 func (r *room) broadcast(s *server, msg string) {
 
-	for _, c := range r.members {
-		// if addr != sender.conn.RemoteAddr() {
-		// 		m.msg(msg)
-		// }
-		// n, err := s.conn.WriteToUDP([]byte(msg), c.remoteAddr())
-		c.msg(s, msg)
+	for _, u := range r.members {
+		fmt.Println("广播", msg)
+		s.sendMsg(u, msg)
 		// log.Println(c, err)
 
 	}
